@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("/src/assets/fonts/GlacialIndifference-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Holiday";
+  src: url("/src/assets/fonts/HolidayFree.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* If you want bold later, uncomment */
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("/src/assets/fonts/GlacialIndifference-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-slide {
+  animation: slide 10s linear infinite;
+}
+
+@import "tailwindcss";
+
+/* Hide on mobile devices (below 768px) */
+@media (max-width: 768px) {
+  .login-wrapper {
+    display: none !important;
+  }
+}
+
+/* ✅ Put theme extensions in ONE block */
+@theme {
+  --font-glacial: "Glacial Indifference", sans-serif;
+  --font-holiday: "Holiday", sans-serif;
+}
