@@ -11,13 +11,20 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+require('dotenv').config();
+
+if (!process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+  console.error("Error: GOOGLE_SERVICE_ACCOUNT_JSON env variable is not set.");
+  process.exit(1);
+}
+
 // --- Google Sheets API Setup ---
 // Replace 'path/to/your/service-account-key.json' with the actual path to the JSON file you downloaded.
-const serviceAccountKeyFile = './crediantials.json'; 
+const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
 const spreadsheetId = '1t2TLNplvGLDtmMrQCIUhAIBhnARD_k9K_qIJObFiAPY'; // Replace with your Google Sheet ID
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: serviceAccountKeyFile,
+  credentials: serviceAccount, // <-- Use 'credentials' here!
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
