@@ -1,7 +1,14 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Linkedin, Github, Mail } from 'lucide-react';
 
 const DeveloperTeam = () => {
+
+   useEffect(() => {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }, []);
+  
+
   const developers = [
     {
       id: 1,

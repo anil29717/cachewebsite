@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, Youtube, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, Youtube, CheckCircle, AlertCircle, Facebook } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const ContactUsPage = () => {
@@ -307,20 +307,20 @@ const ContactUsPage = () => {
             <div className="mt-8 pt-8 border-t border-gray-300">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h3>
               <div className="flex justify-center space-x-6">
-                <a href="#" className="text-gray-600 hover:text-red-600 transition-colors">
+                <a href="https://www.instagram.com/cachetechnologies/" className="text-gray-600 hover:text-red-600 transition-colors">
                   <Instagram className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-red-600 transition-colors">
+                <a href="https://www.linkedin.com/company/cache-digitech-pvt-ltd/" className="text-gray-600 hover:text-red-600 transition-colors">
                   <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-red-600 transition-colors">
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fdigitech_cache" className="text-gray-600 hover:text-red-600 transition-colors">
                   <Twitter className="h-6 w-6" />
                 </a>
-                <a href="https://wa.me/1234567890" className="text-gray-600 hover:text-red-600 transition-colors">
-                  <FaWhatsapp className="h-6 w-6" />
+                <a href="https://www.facebook.com/CacheDigitech01" className="text-gray-600 hover:text-red-600 transition-colors">
+                  <Facebook className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-red-600 transition-colors">
-                  <Youtube className="h-6 w-6" />
+                <a href="mailto:info@cachedigitech.com" className="text-gray-600 hover:text-red-600 transition-colors">
+                  <Mail className="h-6 w-6" />
                 </a>
               </div>
             </div>

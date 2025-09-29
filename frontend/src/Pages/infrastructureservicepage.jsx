@@ -9,6 +9,12 @@ import {
 } from 'lucide-react';
 
 const InfrastructureServicesPage = () => {
+
+   useEffect(() => {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }, []);
+  
+    
   const [activeTab, setActiveTab] = useState('audit');
   const [animatedText, setAnimatedText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
