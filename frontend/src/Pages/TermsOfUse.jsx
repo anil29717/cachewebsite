@@ -125,7 +125,7 @@ const TermsOfUsePage = () => {
                   <FileText className="h-12 w-12" />
                   <div>
                     <h1 className="text-4xl font-bold">Terms of Use</h1>
-                    <p className="text-red-100 mt-2">Cache DigTech Technology Solutions</p>
+                    <p className="text-red-100 mt-2">Cache Digitech Technology Solutions</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-6 text-red-100">
@@ -148,7 +148,7 @@ const TermsOfUsePage = () => {
                     <div className="bg-red-100 p-3 rounded-lg">
                       <Building className="h-6 w-6 text-red-600" />
                     </div>
-                    <h2 className="text-3xl font-bold text-gray-900">About Cache DigTech</h2>
+                    <h2 className="text-3xl font-bold text-gray-900">About Cache DigiTech</h2>
                   </div>
 
                   {/* Company Overview */}

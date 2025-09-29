@@ -1,8 +1,9 @@
 import HeroSection from '../components/HomeComponent/HeroSection'
 import Slider from '../components/HomeComponent/Slider'
+import WhoWeAre from '../components/HomeComponent/Whoweare'
 import FreeVapt from '../components/HomeComponent/FreeVapt'
-// import CacheSolutionsSection from '../components/HomeComponent/CacheSolutionsSection'
-import CacheSolutionsSection from '../components/HomeComponent/CacheSolutions'
+import CacheSolutionsSection from '../components/HomeComponent/CacheSolutionsSection'
+// import CacheSolutionsSection from '../components/HomeComponent/CacheSolutions'
 import ServicesSection from '../components/HomeComponent/services-section'
 import InsightsSection from '../components/HomeComponent/InsightsSection'
 import GlobalPartnersSection from '../components/HomeComponent/Globalpartners'
@@ -23,8 +24,10 @@ export default function HomePage() {
 
       {/* <CacheSolutionsSection /> */}
       <CacheSolutionsSection />
+      {/* <CacheSolutionsSection /> */}
 
-      <ServicesSection />
+      {/* <ServicesSection /> */}
+      <WhoWeAre />
       <InsightsSection />
       {/* <GlobalPartnersSection /> */}
       <PartnershipSection />

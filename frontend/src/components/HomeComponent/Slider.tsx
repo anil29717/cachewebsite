@@ -10,24 +10,13 @@ interface Slide {
 
 // The provided slide data
 const slides: Slide[] = [
-  { img: "/images/cloudimg.webp", title: "Cloud", desc: "Scalable and reliable cloud infrastructure services." },
-  { img: "/images/aimlimg.webp", title: "AI / ML", desc: "Advanced AI and ML solutions for automation and insights." },
-  { img: "/images/itimg.webp", title: "Networking", desc: "Seamless, secure networking for your enterprise." },
-  { img: "/images/cyberimg.webp", title: "Cyber Security", desc: "Protect your digital assets with enterprise-grade security." },
-  { img: "/images/infraimg.webp", title: "Infrastructure", desc: "Reliable IT infrastructure to power your business." },
-  { img: "/images/consultingimg.webp", title: "Consulting", desc: "Strategic technology consulting and digital transformation." },
-  { img: "/images/cloudimg.webp", title: "Cloud", desc: "Scalable and reliable cloud infrastructure services." },
-  { img: "/images/aimlimg.webp", title: "AI / ML", desc: "Advanced AI and ML solutions for automation and insights." },
-  { img: "/images/itimg.webp", title: "Networking", desc: "Seamless, secure networking for your enterprise." },
-  { img: "/images/cyberimg.webp", title: "Cyber Security", desc: "Protect your digital assets with enterprise-grade security." },
-  { img: "/images/infraimg.webp", title: "Infrastructure", desc: "Reliable IT infrastructure to power your business." },
-  { img: "/images/consultingimg.webp", title: "Consulting", desc: "Strategic technology consulting and digital transformation." },
-  { img: "/images/cloudimg.webp", title: "Cloud", desc: "Scalable and reliable cloud infrastructure services." },
-  { img: "/images/aimlimg.webp", title: "AI / ML", desc: "Advanced AI and ML solutions for automation and insights." },
-  { img: "/images/itimg.webp", title: "Networking", desc: "Seamless, secure networking for your enterprise." },
-  { img: "/images/cyberimg.webp", title: "Cyber Security", desc: "Protect your digital assets with enterprise-grade security." },
-  { img: "/images/infraimg.webp", title: "Infrastructure", desc: "Reliable IT infrastructure to power your business." },
-  { img: "/images/consultingimg.webp", title: "Consulting", desc: "Strategic technology consulting and digital transformation." },
+  { img: "/images/cloudimg.webp", title: "Consulting & Auditing", desc: "Scalable and reliable cloud infrastructure services." },
+  { img: "/images/aimlimg.webp", title: "Data AI", desc: "Advanced AI and ML solutions for automation and insights." },
+  { img: "/images/itimg.webp", title: "Cyber Security", desc: "Seamless, secure networking for your enterprise." },
+  { img: "/images/cyberimg.webp", title: "Cloud", desc: "Protect your digital assets with enterprise-grade security." },
+  { img: "/images/infraimg.webp", title: "Manage Services", desc: "Reliable IT infrastructure to power your business." },
+  { img: "/images/consultingimg.webp", title: "Infra & Networking", desc: "Strategic technology consulting and digital transformation." },
+  { img: "/images/grc.png", title: "GRC", desc: "Governance, Risk, and Compliance solutions for your business." }
 ];
 
 const EXTENSION_COUNT = 3; // Number of slides to duplicate for a seamless loop

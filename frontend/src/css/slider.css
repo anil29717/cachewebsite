@@ -89,11 +89,12 @@
 }
 
 .card {
-  background-color: rgba(145, 140, 140, 0.667); /* A translucent white background */
+  background-color: white; /* A translucent white background */
   padding: 1rem; /* 16px */
+  opacity: 0.8;
   border-radius: 0.75rem; /* 12px */
   border: 1px solid rgba(255, 255, 255, 0.3); /* A semi-transparent white border */
-  color: white;
+  color: black;
   text-align: center;
 }
 

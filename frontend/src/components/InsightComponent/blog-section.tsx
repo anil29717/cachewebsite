@@ -7,28 +7,28 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 const blogPosts = [
   {
     id: 1,
-    title: "The Future of System Integration: AI-Driven Automation",
-    excerpt: "Exploring how artificial intelligence is revolutionizing the way we approach system integration and digital transformation.",
-    author: "DR Goyal",
+    title: "Prarthana Gupta Cache Technologies",
+    excerpt: "Prarthana is the CMD of Cache and its group of companies. The first of its group companies, Cache Technologies was founded in 1991 that specialize in hardware solutions and support services and maintains exclusive partnership with most OEMs of the industry. ",
+    author: "Purva Unipegasus",
     date: "March 15, 2025",
-    category: "AI Technology",
+    category: "About Cache",
     readTime: "5 min read",
-    image: "/blog/ai.jpg"
+    image: "/team/prathnamam.avif"
   },
   {
     id: 2,
-    title: "Cloud Migration Strategies for Enterprise Systems",
-    excerpt: "A comprehensive guide to planning and executing successful cloud migration projects for large-scale enterprise systems.",
-    author: "Navneet Kumar",
+    title: "Why the World Needs Sustainable Software More Than Ever",
+    excerpt: "Digital technology is now so deeply integrated into everyday life that it's sometimes easy to forget it's even there. But the growing use...",
+    author: "Developer palak",
     date: "March 8, 2025",
     category: "Cloud",
     readTime: "8 min read",
-    image: "/blog/cloud.jpg"
+    image: "/blog/2ndblog.avif"
   },
  {
   id: 3,
-  title: "Securing Digital Transformation: Measuring ROI in Secure Integration Projects",
-  excerpt: "Explore how organizations can balance innovation with security while calculating the return on investment in digital transformation initiatives.",
+  title: "Why the World Needs Sustainable Software More Than Ever",
+  excerpt: "Digital technology is now so deeply integrated into everyday life that it's sometimes easy to forget it's even there....",
   author: "Shraddha Gupta",
   date: "February 28, 2025",
   category: "Security",
@@ -75,9 +75,9 @@ export function BlogSection() {
                       alt={post.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    <Badge className="absolute top-4 left-4 bg-red-600 text-white">
+                    {/* <Badge className="absolute top-4 left-4 bg-red-600 text-white">
                       {post.category}
-                    </Badge>
+                    </Badge> */}
                   </div>
                 </CardHeader>
                 <CardContent className="p-6 flex flex-col h-full">

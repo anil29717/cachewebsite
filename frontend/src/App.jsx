@@ -17,12 +17,16 @@ import AboutCache from "./Pages/AboutPage";
 import PrivacyPolicyPage from "./Pages/PrivacyPolicyPage";
 import TermsOfUsePage from "./Pages/TermsOfUse";
 import Careers from "./Pages/Career";
+// import CloudServicesPage from "./Pages/coudpage";
 import CloudServicesPage from "./Pages/coudpage";
 import CybersecurityServicesPage from "./Pages/cybersecurity";
 import InfrastructureServicesPage from "./Pages/infrastructureservicepage";
 import NetworkingServicesPage from "./Pages/NetworkingServicepage";
 import AIDataServicesPage from "./Pages/aianddataservicepage";
-import ConsultingServicesPage from "./Pages/consultingservicePage";
+// import ConsultingServicesPage from "./Pages/consultingservicePage";
+// import InfrastructureServicesPage from "./Pages/NetworkingServicepage";
+import NetworkingConsultingPage from "./Pages/consultingservicePage";
+import ManagedServicesPage from "./Pages/ManagedServices";
 
 function App() {
   const location = useLocation();
@@ -45,15 +49,15 @@ function App() {
         <Route path="/service/cloud-solutions" element={<CloudServicesPage />} />
         <Route path="/service/cybersecurity" element={<CybersecurityServicesPage />} />
         <Route path="/service/AI" element={<AIDataServicesPage />} />
-        <Route path="//consultingservice" element={<ConsultingServicesPage />} />
+        <Route path="/consultingservice" element={<NetworkingConsultingPage />} /> */}
 
 
         <Route path="/cloudservices" element={<CloudServicesPage />} />
         <Route path="/cybersecurity" element={<CybersecurityServicesPage />} /> 
         <Route path="/infrastructureservice" element={<InfrastructureServicesPage />} />
-        <Route path="/networkingservice" element={<NetworkingServicesPage />} />
         <Route path="/aianddataservice" element={<AIDataServicesPage />} />
-        <Route path="/consultingservice" element={<ConsultingServicesPage />} />
+        <Route path="/manageservices" element={<ManagedServicesPage />} />
+        <Route path="/consultingservice" element={<NetworkingConsultingPage />} />
 
 
         <Route path="/contact" element={<Contact />} />
