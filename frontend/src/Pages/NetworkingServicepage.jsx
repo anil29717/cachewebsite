@@ -464,17 +464,15 @@ const NetworkingServicesPage = () => {
 
           {/* Call to Action */}
           <div className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-lg">
-            <h2 className="text-3xl font-bold mb-4">Connect Your Business Future</h2>
+            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Transform your network infrastructure with our expert {currentTab.label.toLowerCase()} services
+              Transform your business with our expert {currentTab.label.toLowerCase()} services
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => navigate('/contact')} className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Contact Network Experts
+              <button onClick={() => navigate('/contactus')} className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Contact Us
               </button>
-              <button onClick={() => navigate('/services')} className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors">
-                View All Services
-              </button>
+              
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@ import CybersecurityServicesPage from "./Pages/cybersecurity";
 import InfrastructureServicesPage from "./Pages/infrastructureservicepage";
 import NetworkingServicesPage from "./Pages/NetworkingServicepage";
 import AIDataServicesPage from "./Pages/aianddataservicepage";
+import ConsultingServicesPage from "./Pages/consultingservicePage";
 
 function App() {
   const location = useLocation();
@@ -52,6 +53,7 @@ function App() {
         <Route path="/infrastructureservice" element={<InfrastructureServicesPage />} />
         <Route path="/networkingservice" element={<NetworkingServicesPage />} />
         <Route path="/aianddataservice" element={<AIDataServicesPage />} />
+        <Route path="/consultingservice" element={<ConsultingServicesPage />} />
 
 
         <Route path="/contact" element={<Contact />} />

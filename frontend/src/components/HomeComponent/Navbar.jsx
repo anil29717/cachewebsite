@@ -54,7 +54,7 @@ function Navbar() {
       "Security": "/cybersecurity",
       "Cloud Solution": "/cloudservices",
       "Artificial Intelligence": "/aianddataservice",
-      "Consulting": "/service/consulting",
+      "Consulting": "/consultingservice",
 
       // Community section
       "Industry": "/community",
