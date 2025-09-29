@@ -27,14 +27,14 @@ function Navbar() {
   }, [menuOpen]);
 
   // Service data with descriptions
-  const services = {
-    "Infrastructure": "Enterprise-grade infrastructure solutions for scalable business growth",
-    "Network Solution": "Comprehensive networking services for seamless connectivity",
-    "Security": "Advanced cybersecurity solutions to protect your digital assets",
-    "Cloud Solution": "Cloud migration and management services for modern businesses",
-    "Artificial Intelligence": "AI-powered solutions to transform your business operations",
-    "Consulting": "Strategic IT consulting to optimize your technology investments"
-  };
+  // const services = {
+  //   "Infrastructure": "Enterprise-grade infrastructure solutions for scalable business growth",
+  //   "Network Solution": "Comprehensive networking services for seamless connectivity",
+  //   "Security": "Advanced cybersecurity solutions to protect your digital assets",
+  //   "Cloud Solution": "Cloud migration and management services for modern businesses",
+  //   "Artificial Intelligence": "AI-powered solutions to transform your business operations",
+  //   "Consulting": "Strategic IT consulting to optimize your technology investments"
+  // };
 
   const handleMenuItemClick = (label) => {
     setMenuOpen(false);
@@ -49,12 +49,12 @@ function Navbar() {
       "Team": "/about",
 
       // Services section
-      "Infrastructure": "/infrastructureservice",
-      "Network Solution": "/networkingservice",
-      "Security": "/cybersecurity",
-      "Cloud Solution": "/cloudservices",
-      "Artificial Intelligence": "/aianddataservice",
-      "Consulting": "/consultingservice",
+      "Cyber Security": "/cybersecurity",
+      "Data AI": "/aianddataservice",
+      "Cloud": "/cloudservices",
+      "Infrastructure & Networking": "/infrastructureservice",
+      "Managed Services": "/manageservices",
+      "Consulting & Auditing": "/consultingservice",
 
       // Community section
       "Industry": "/community",
@@ -696,7 +696,7 @@ function Navbar() {
             {["Concept of Cache", "Mission Vision", "Certifications and Awards", "Team"].map((item, i) => renderMenuItem(item, i))}
 
             <h3 className="text-lg font-bold text-black mt-6">Our Services</h3>
-            {["Infrastructure", "Network Solution", "Security", "Cloud Solution", "Artificial Intelligence", "Consulting"].map((item, i) => renderMenuItem(item, i + 5, true))}
+            {["Cyber Security", "Data AI", "Cloud", "Infrastructure & Networking", "Managed Services", "Consulting & Auditing"].map((item, i) => renderMenuItem(item, i + 5, true))}
 
             <h3 className="text-lg font-bold text-black mt-6">Community</h3>
             {["Industry", "Partners", "Clients"].map((item, i) => renderMenuItem(item, i + 11, true))}

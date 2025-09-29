@@ -3,6 +3,7 @@ import GrowthSection from "../components/AboutPageComponent/GrowthComponent";
 import CacheSolutionsSection from "../components/HomeComponent/CacheSolutions";
 import PartnershipCards from "../components/AboutPageComponent/Cards";
 import TeamSection from "../components/AboutPageComponent/Team";
+import InfiniteSlider from "../components/AboutPageComponent/ImageSlider";
 
 function AboutCache() {
 
@@ -280,7 +281,9 @@ function AboutCache() {
 
 
       <GrowthSection />
+      <InfiniteSlider />
       <PartnershipCards />
+
     </div>
   );
 }

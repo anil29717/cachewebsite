@@ -17,7 +17,7 @@ const LoginButton: React.FC = () => {
 
     "Infrastructure": "/infrastructureservice",
     "Network Solution": "/networkingservice",
-    "Security": "/cybersecurity",
+    "Cyber Security": "/cybersecurity",
     "Cloud Solution": "/cloudservices",
     "Artificial Intelligence": "/aianddataservice",
     "Consulting": "/consultingservice",
@@ -77,7 +77,10 @@ const LoginButton: React.FC = () => {
     position: "absolute",
     right: 0,
     marginTop: "5px",
-    background: "white",
+    // border: "1px solid black",
+    background: "rgba(200, 200, 200, 0.3)", // light gray with transparency
+    backdropFilter: "blur(10px)",            // blur effect
+    WebkitBackdropFilter: "blur(10px)",
     borderRadius: "10px",
     boxShadow: "0px 2px 8px rgba(0,0,0,0.15)",
     maxHeight: "200px",
@@ -90,49 +93,59 @@ const LoginButton: React.FC = () => {
     padding: "10px 15px",
     cursor: "pointer",
     fontSize: "14px",
-    borderBottom: "1px solid #f0f0f0",
+    // borderBottom: "1px solid #f0f0f0",
   };
 
   return (
     <div className="fixed top-10 right-10 hidden md:flex justify-end z-50">
-      {/* Search Input */}
-      <div style={containerStyle} onClick={() => setExpanded(true)}>
-        <FiSearch style={iconStyle} />
-        {expanded ? (
-          <input
-            style={inputStyle}
-            type="text"
-            placeholder="Search..."
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            autoFocus
-            onBlur={() => !value && setExpanded(false)}
-          />
-        ) : (
-          <span style={textStyle}>Search</span>
+      {/* Wrapper must be relative so dropdown positions correctly */}
+      <div style={{ position: "relative" }}>
+        {/* Search Input */}
+        <div style={containerStyle} onClick={() => setExpanded(true)}>
+          <FiSearch style={iconStyle} />
+          {expanded ? (
+            <input
+              style={inputStyle}
+              type="text"
+              placeholder="Search..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              autoFocus
+              onBlur={() => !value && setExpanded(false)}
+            />
+          ) : (
+            <span style={textStyle}>Search</span>
+          )}
+        </div>
+
+        {/* Dropdown results */}
+        {expanded && value && results.length > 0 && (
+          <div
+            style={{
+              ...dropdownStyle,
+              top: "100%",   // position directly below input
+              right: "0",
+            }}
+          >
+            {results.map((item, idx) => (
+              <div
+                key={idx}
+                style={itemStyle}
+                onMouseDown={() => {
+                  navigate(menuItems[item]);
+                  setExpanded(false);
+                  setValue("");
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         )}
       </div>
-
-      {/* Dropdown results */}
-      {expanded && value && results.length > 0 && (
-        <div style={dropdownStyle}>
-          {results.map((item, idx) => (
-            <div
-              key={idx}
-              style={itemStyle}
-              onMouseDown={() => {
-                navigate(menuItems[item]);
-                setExpanded(false);
-                setValue("");
-              }}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
+
 };
 
 export default LoginButton;

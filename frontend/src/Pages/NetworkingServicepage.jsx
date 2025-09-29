@@ -390,8 +390,8 @@ const NetworkingServicesPage = () => {
 
           {/* Pros and Cons */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">Advantages & Considerations</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">Advantages</h2>
+            <div className=" gap-8">
               <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
                 <h3 className="text-xl font-semibold text-green-800 mb-4 flex items-center gap-2">
                   <CheckCircle className="w-6 h-6" />
@@ -407,7 +407,7 @@ const NetworkingServicesPage = () => {
                 </ul>
               </div>
               
-              <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-500">
+              {/* <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-amber-500">
                 <h3 className="text-xl font-semibold text-amber-800 mb-4 flex items-center gap-2">
                   <AlertTriangle className="w-6 h-6" />
                   Considerations
@@ -420,12 +420,12 @@ const NetworkingServicesPage = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
 
           {/* Detailed Services */}
-          <div className="mb-16">
+          {/* <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-8">Service Details</h2>
             <div className="space-y-8">
               {currentTab.content.services.map((service, index) => (
@@ -445,10 +445,10 @@ const NetworkingServicesPage = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Related Services */}
-          <div className="mb-16">
+          {/* <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">Related Services</h2>
             <div className="flex flex-wrap gap-3">
               {currentTab.content.relatedServices.map((service, index) => (
@@ -460,7 +460,7 @@ const NetworkingServicesPage = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Call to Action */}
           <div className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-lg">
