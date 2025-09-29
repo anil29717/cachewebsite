@@ -11,16 +11,16 @@ const LoginButton: React.FC = () => {
   const menuItems: Record<string, string> = {
     "Concept of Cache": "/about",
     "Mission Vision": "/about",
-    "Meaning of Logo": "/about",
+    // "Meaning of Logo": "/about",
     "Certifications and Awards": "/about",
     "Team": "/about",
 
-    "Infrastructure": "/service/infra",
-    "Network Solution": "/service/network",
-    "Security": "/service/security",
-    "Cloud Solution": "/service/cloud",
-    "Artificial Intelligence": "/service/ai",
-    "Consulting": "/service/consulting",
+    "Infrastructure": "/infrastructureservice",
+    "Network Solution": "/networkingservice",
+    "Security": "/cybersecurity",
+    "Cloud Solution": "/cloudservices",
+    "Artificial Intelligence": "/aianddataservice",
+    "Consulting": "/consultingservice",
 
     "Industry": "/community",
     "Partners": "/community",

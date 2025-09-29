@@ -45,7 +45,7 @@ function App() {
         <Route path="/service/cloud-solutions" element={<CloudServicesPage />} />
         <Route path="/service/cybersecurity" element={<CybersecurityServicesPage />} />
         <Route path="/service/AI" element={<AIDataServicesPage />} />
-        {/* <Route path="/service/consulting" element={<ServiceDetail />} /> */}
+        <Route path="//consultingservice" element={<ConsultingServicesPage />} />
 
 
         <Route path="/cloudservices" element={<CloudServicesPage />} />
