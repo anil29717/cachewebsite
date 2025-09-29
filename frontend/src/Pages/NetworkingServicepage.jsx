@@ -13,6 +13,11 @@ const NetworkingServicesPage = () => {
   const [animatedText, setAnimatedText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
 
+   useEffect(() => {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }, []);
+  
+    
   const navigate = useNavigate();
 
   // Hero section animated texts

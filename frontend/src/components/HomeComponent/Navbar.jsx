@@ -693,7 +693,7 @@ function Navbar() {
     max-h-full bg-transparent backdrop-blur-sm
   ">
             <h3 className="text-lg font-bold text-black mt-6">About</h3>
-            {["Concept of Cache", "Mission Vision", "Meaning of Logo", "Certifications and Awards", "Team"].map((item, i) => renderMenuItem(item, i))}
+            {["Concept of Cache", "Mission Vision", "Certifications and Awards", "Team"].map((item, i) => renderMenuItem(item, i))}
 
             <h3 className="text-lg font-bold text-black mt-6">Our Services</h3>
             {["Infrastructure", "Network Solution", "Security", "Cloud Solution", "Artificial Intelligence", "Consulting"].map((item, i) => renderMenuItem(item, i + 5, true))}

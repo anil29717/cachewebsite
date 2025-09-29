@@ -15,6 +15,11 @@ const CybersecurityServicesPage = () => {
 
   const navigate = useNavigate();
 
+   useEffect(() => {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }, []);
+  
+    
   // Hero section animated texts
   const heroTexts = [
     'Protect Your Digital Assets with Advanced Security',

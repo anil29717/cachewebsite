@@ -1,6 +1,6 @@
 // src/pages/Careers.jsx
 import { Briefcase, Shield, Network, Server, AlertTriangle, TrendingUp } from 'lucide-react';
-
+import { useEffect } from 'react';
 const jobs = [
     {
         title: 'Inside Sales Executive',
@@ -40,7 +40,15 @@ const jobs = [
     },
 ];
 
+
+
 export default function Careers() {
+
+     useEffect(() => {
+        window.scrollTo(0, 0); // scroll to top when page loads
+      }, []);
+    
+
     return (
         <div className="min-h-screen bg-white font-black w-full ">
             <section className="py-16 px-4 max-w-4xl mx-auto">

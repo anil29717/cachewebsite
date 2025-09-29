@@ -26,6 +26,11 @@ import {
 } from 'lucide-react';
 
 const TermsOfUsePage = () => {
+   useEffect(() => {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }, []);
+  
+    
   const [activeSection, setActiveSection] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
