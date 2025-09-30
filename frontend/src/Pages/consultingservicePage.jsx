@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
+import {
   Network, Shield, Cloud, FileText, Activity, Brain,
-  CheckCircle, Star, Search, BarChart, Target, 
+  CheckCircle, Star, Search, BarChart, Target,
   Users, Settings, Monitor, Database, Server,
   Globe, Cpu, AlertTriangle, TrendingUp,
   Zap, Code, Building, Clock, DollarSign, Lock,
@@ -26,7 +26,7 @@ const NetworkingConsultingPage = () => {
   useEffect(() => {
     const currentText = heroTexts[textIndex];
     let charIndex = 0;
-    
+
     const typeWriter = setInterval(() => {
       if (charIndex < currentText.length) {
         setAnimatedText(currentText.slice(0, charIndex + 1));
@@ -145,25 +145,32 @@ const NetworkingConsultingPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-screen bg-cover bg-center bg-gradient-to-br from-black via-black to-black opacity-100"
-        style={{ backgroundImage: "url('/servicesimages/consulting.jpg')" }}>
-        <div className="max-w-6xl mx-auto px-6  pt-18 text-center">
-          <div className="">
-            <Network className="w-20 h-20 mx-auto mb-6 opacity-90" />
+      <div
+        className="relative h-[80vh] bg-cover bg-center"
+        style={{ backgroundImage: "url('/servicesimages/consultingimage.jpg')" }}
+      >
+        {/* Semi-transparent black overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black opacity-60 bg-opacity-60"></div>
+
+        {/* Text content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 pt-18 text-center flex flex-col justify-center h-full">
+          <div>
+            <Network className="w-20 h-20 mx-auto mb-6 text-white" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
             Networking & Consulting Services
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-4xl mx-auto">
             Expert technology consulting services driving digital transformation and operational excellence through strategic innovation
           </p>
           <div className="h-8 mb-8">
-            <p className="text-lg">
+            <p className="text-lg text-white">
               {animatedText}<span className="animate-pulse">|</span>
             </p>
           </div>
         </div>
       </div>
+
 
       {/* Sticky Navigation */}
       <div className="bg-white shadow-lg sticky top-0 z-50">
@@ -209,7 +216,7 @@ const NetworkingConsultingPage = () => {
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto text-center">
                   {service.description}
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {service.keyFeatures.map((feature, featureIndex) => (
                     <div key={featureIndex} className="text-center p-6 bg-gray-50 rounded-lg">
@@ -242,14 +249,14 @@ const NetworkingConsultingPage = () => {
             Discover how our comprehensive networking and consulting services can drive innovation and growth for your organization
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              onClick={() => console.log('Get Expert Consultation clicked')} 
+            <button
+              onClick={() => console.log('Get Expert Consultation clicked')}
               className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Get Expert Consultation
             </button>
-            <button 
-              onClick={() => console.log('View Case Studies clicked')} 
+            <button
+              onClick={() => console.log('View Case Studies clicked')}
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
             >
               View Case Studies

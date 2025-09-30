@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Brain, Database, BarChart, Cpu, TrendingUp, Users, 
-  CheckCircle, XCircle, DollarSign, Target, 
+import {
+  Brain, Database, BarChart, Cpu, TrendingUp, Users,
+  CheckCircle, XCircle, DollarSign, Target,
   Clock, Star, ArrowRight, FileText, Shield,
   Monitor, Settings, Zap, Eye, AlertTriangle,
   Bot, ChartBar, Layers, Search, Lightbulb,
@@ -29,7 +29,7 @@ const AIDataServicesPage = () => {
   useEffect(() => {
     const currentText = heroTexts[textIndex];
     let charIndex = 0;
-    
+
     const typeWriter = setInterval(() => {
       if (charIndex < currentText.length) {
         setAnimatedText(currentText.slice(0, charIndex + 1));
@@ -101,7 +101,7 @@ const AIDataServicesPage = () => {
         { icon: Target, title: 'Custom AI Solutions', desc: 'Tailored applications for specific business requirements' }
       ]
     },
-    
+
     {
       id: 'design',
       label: 'Design',
@@ -121,39 +121,32 @@ const AIDataServicesPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-screen bg-cover bg-center bg-gradient-to-br from-black via-black to-black opacity-100"
-        style={{ backgroundImage: "url('/servicesimages/aiimage.jpg')" }}>
-        <div className="max-w-6xl mx-auto px-6 pt-16 text-center h-screen bg-gradient-to-br from-black via-black to-black opacity-20">
-          <div className="mb-8">
-            <Brain className="w-20 h-20 mx-auto mb-6 opacity-90" />
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+      <div
+        className="relative py-24 bg-cover bg-center"
+        style={{ backgroundImage: "url('/servicesimages/aiimage.jpg')" }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-black opacity-70 bg-opacity-60"></div>
+
+        {/* Text */}
+        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6">
+          <Brain className="w-20 h-20 mb-6 text-white opacity-90" />
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
             AI & Data Services
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">
-            Transform your business with intelligent AI solutions and data-driven insights that drive innovation and competitive advantage
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-4xl">
+            Transform your business with intelligent AI solutions and data-driven
+            insights that drive innovation and competitive advantage
           </p>
-          <div className="h-8 mb-8">
-            <p className="text-lg">
-              {animatedText}<span className="animate-pulse">|</span>
-            </p>
-          </div>
-          {/* <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              onClick={() => navigate('/contact')} 
-              className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Get AI Consultation
-            </button>
-            <button 
-              onClick={() => navigate('/services')} 
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
-            >
-              View All Services
-            </button>
-          </div> */}
+          <p className="text-lg text-white">
+            {animatedText}
+            <span className="animate-pulse">|</span>
+          </p>
         </div>
       </div>
+
+
+
 
       {/* Sticky Navigation */}
       <div className="bg-white shadow-lg sticky top-0 z-50">
@@ -199,7 +192,7 @@ const AIDataServicesPage = () => {
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto text-center">
                   {service.description}
                 </p>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {service.keyFeatures.map((feature, featureIndex) => (
                     <div key={featureIndex} className="text-center p-6 bg-gray-50 rounded-lg">
@@ -232,14 +225,14 @@ const AIDataServicesPage = () => {
             Discover how our comprehensive AI and data services can drive innovation and growth for your organization
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              onClick={() => navigate('/contact')} 
+            <button
+              onClick={() => navigate('/contact')}
               className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Start Your AI Journey
             </button>
-            <button 
-              onClick={() => navigate('/portfolio')} 
+            <button
+              onClick={() => navigate('/portfolio')}
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
             >
               View Our Projects

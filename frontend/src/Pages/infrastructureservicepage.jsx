@@ -129,7 +129,7 @@ const InfrastructureServicesPage = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div 
-        className="relative h-screen bg-cover bg-center"
+        className="relative h-[80vh] bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)`
         }}
@@ -178,7 +178,7 @@ const InfrastructureServicesPage = () => {
       {/* Services Sections */}
       {services.map((service, index) => (
         <section key={service.id} id={service.id} className="py-16 px-6 mt-1">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto mt-4">
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="mb-6">

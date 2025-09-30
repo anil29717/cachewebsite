@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
+import {
   Cloud, Shield, Users, Target, Search, Eye,
   CheckCircle, TrendingUp, DollarSign, Settings,
   Clock, Star, ArrowRight, Database, FileText,
@@ -27,7 +27,7 @@ const CloudServicesPage = () => {
   useEffect(() => {
     const currentText = heroTexts[textIndex];
     let charIndex = 0;
-    
+
     const typeWriter = setInterval(() => {
       if (charIndex < currentText.length) {
         setAnimatedText(currentText.slice(0, charIndex + 1));
@@ -127,29 +127,28 @@ const CloudServicesPage = () => {
   return (
     <div className="min-h-screen ">
       {/* Hero Section */}
-      <div 
-        className="relative h-screen bg-cover bg-center "
+      <div
+        className="relative py-24 bg-cover bg-center  bg-gradient-to-br from-black via-black to-black opacity-100"
         style={{ backgroundImage: "url('/servicesimages/cloudimage.jpg')" }}
       >
-        <div className="absolute inset-0 flex items-center z-10 justify-center bg-gradient-to-br from-black via-black to-black opacity-50">
-          <div className="text-center text-white px-6 pt-16 max-w-4xl z-0">
-            <div className="mb-6">
-              <Cloud className="w-16 h-16 mx-auto mb-4" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              Cloud Services
-            </h1>
-            <p className="text-xl md:text-2xl mb-8">
-              Accelerate your digital transformation with comprehensive cloud solutions
-            </p>
-            <div className="h-8">
-              <p className="text-lg">
-                {animatedText}<span className="animate-pulse">|</span>
-              </p>
-            </div>
-          </div>
+        {/* Black overlay only */}
+        <div className="absolute inset-0 "></div>
+
+        {/* Text content */}
+        <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6">
+          <Cloud className="w-16 h-16 mx-auto mb-4 text-white" />
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+            Cloud Services
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-4xl">
+            Accelerate your digital transformation with comprehensive cloud solutions
+          </p>
+          <p className="text-lg text-white">
+            {animatedText}<span className="animate-pulse">|</span>
+          </p>
         </div>
       </div>
+
 
       {/* Navigation */}
       <div className="bg-white shadow-lg sticky top-0 z-50">
@@ -175,7 +174,7 @@ const CloudServicesPage = () => {
       {/* Services Sections */}
       {services.map((service, index) => (
         <section key={service.id} id={service.id} className="py-16 px-6 mt-3">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto mt-4">
             {/* Section Header */}
             <div className="text-center mb-16">
               <div className="mb-6">
@@ -190,7 +189,7 @@ const CloudServicesPage = () => {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-4xl mx-auto text-center">
                 {service.description}
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {service.keyFeatures.map((feature, featureIndex) => (
                   <div key={featureIndex} className="text-center p-6 bg-gray-50 rounded-lg">
