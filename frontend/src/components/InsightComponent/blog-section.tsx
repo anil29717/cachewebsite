@@ -13,7 +13,7 @@ const blogPosts = [
     date: "March 15, 2025",
     category: "About Cache",
     readTime: "5 min read",
-    image: "/team/prathnamam.avif"
+    image: "/team/prathna.png"
   },
   {
     id: 2,
