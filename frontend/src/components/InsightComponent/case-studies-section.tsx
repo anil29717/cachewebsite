@@ -336,9 +336,7 @@ export function CaseStudiesSection() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const activeStudyParam = urlParams.get('activeStudy');
-    
     if (activeStudyParam) {
-      // Map the case study name from CacheSolutionsSection to the corresponding industry
       const industryMapping: IndustryMapping = {
         'Telecom Network Modernization': 'Telecom',
         'Banking & Financial Services Innovation': 'BFSI',
@@ -348,26 +346,24 @@ export function CaseStudiesSection() {
         'Government Digital Services': 'Governance',
         'IT Services & Technology Solutions': 'IT & ITES'
       };
-      
       const mappedIndustry = industryMapping[activeStudyParam];
       if (mappedIndustry && industries.includes(mappedIndustry)) {
         setActiveTab(mappedIndustry);
-        
-        // Scroll to success stories section after a brief delay to ensure proper rendering
         setTimeout(() => {
           const element = document.getElementById('success-stories');
           if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }, 300);
-        
-        // Clear the URL parameter after setting the tab to prevent interference with manual tab switching
-        const newUrl = new URL(window.location);
-        newUrl.searchParams.delete('activeStudy');
-        window.history.replaceState({}, '', newUrl);
       }
+      // Only clear the param once, so user can switch tabs after
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.delete('activeStudy');
+      window.history.replaceState({}, '', newUrl);
     }
-  }, [location.search, industries]);
+    // Only run this effect on mount
+    // eslint-disable-next-line
+  }, []);
   
   // Filter case studies based on active tab
   const filteredCaseStudies = caseStudies.filter(study => study.industry === activeTab);

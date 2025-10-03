@@ -48,7 +48,7 @@ export default function HomePage() {
       {/* <Chatbot /> */}
 
       {/* Botpress Chatbot Component (Bottom Left) */}
-      <BotpressChatbot />
+      {/* <BotpressChatbot /> */}
 
       {/* <FullScreenThreeImageSlider /> */}
     </>

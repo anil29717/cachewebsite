@@ -46,10 +46,7 @@ const LoginButton: React.FC = () => {
     if (!notificationOpen) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        bellRef.current &&
-        !bellRef.current.contains(event.target as Node)
-      ) {
+      if (bellRef.current && !bellRef.current.contains(event.target as Node)) {
         setNotificationOpen(false);
       }
     };
@@ -79,7 +76,11 @@ const LoginButton: React.FC = () => {
     position: "relative",
   };
 
-  const iconStyle: React.CSSProperties = { fontSize: "20px", flexShrink: 0, color: "black" };
+  const iconStyle: React.CSSProperties = {
+    fontSize: "20px",
+    flexShrink: 0,
+    color: "black",
+  };
 
   const inputStyle: React.CSSProperties = {
     border: "none",
@@ -159,11 +160,54 @@ const LoginButton: React.FC = () => {
     transition: "background-color 0.2s ease",
   };
 
-  const itemStyle: React.CSSProperties = { padding: "10px 15px", cursor: "pointer", fontSize: "14px" };
+  const itemStyle: React.CSSProperties = {
+    padding: "10px 15px",
+    cursor: "pointer",
+    fontSize: "14px",
+  };
 
   return (
-    <div className="fixed top-10 right-12 hidden md:flex justify-end z-50">
-      <div style={{ display: "flex", alignItems: "center" }}>
+    <div className="fixed top-11 right-1 md:top-5 md:right-5 flex justify-end z-50">
+      {/* 🔔 Mobile Bell Icon (visible on small only) */}
+      <div className="flex md:hidden" ref={bellRef}>
+        {hasNewNotification && !notificationOpen && <span style={ringStyle}></span>}
+        <img
+          src="/bell-icon.svg"
+          alt="Notifications"
+          style={{ ...bellIconStyle, width: "35px", height: "35px" }}
+          onClick={() => setNotificationOpen(!notificationOpen)}
+        />
+        {notificationOpen && (
+          <div style={notificationDropdownStyle}>
+            {notificationItems.map((item, idx) => (
+              <div
+                key={idx}
+                style={{
+                  ...notificationItemStyle,
+                  borderBottom:
+                    idx === notificationItems.length - 1 ? "none" : "1px solid rgba(255,255,255,0.2)",
+                }}
+                onClick={() => {
+                  navigate(item.route);
+                  setNotificationOpen(false);
+                  setHasNewNotification(false);
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.2)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "transparent")
+                }
+              >
+                {item.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* 🖥️ Desktop Search + Bell */}
+      <div className="hidden md:flex items-center">
         {/* Search Input */}
         <div style={containerStyle} onClick={() => setExpanded(true)}>
           <FiSearch style={iconStyle} />
@@ -198,15 +242,20 @@ const LoginButton: React.FC = () => {
                   key={idx}
                   style={{
                     ...notificationItemStyle,
-                    borderBottom: idx === notificationItems.length - 1 ? "none" : "1px solid rgba(255,255,255,0.2)",
+                    borderBottom:
+                      idx === notificationItems.length - 1 ? "none" : "1px solid rgba(255,255,255,0.2)",
                   }}
                   onClick={() => {
                     navigate(item.route);
                     setNotificationOpen(false);
                     setHasNewNotification(false);
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.2)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.2)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "transparent")
+                  }
                 >
                   {item.label}
                 </div>

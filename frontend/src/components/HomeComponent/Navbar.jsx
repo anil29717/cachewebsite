@@ -137,7 +137,7 @@ function Navbar() {
 
       {/* Main Sidebar */}
       <div className={`
-        fixed top-0 left-0 w-72 h-full bg-white z-[2000] flex flex-col transition-transform duration-500 ease-out shadow-2xl
+        fixed top-0 left-0 w-54 md:w-72 h-full bg-white z-[2000] flex flex-col transition-transform duration-500 ease-out shadow-2xl
         ${menuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}
       `}>
         {/* Sidebar Header */}
@@ -184,7 +184,7 @@ function Navbar() {
       {/* Submenu Panel */}
       {activeSubmenu && menuOpen && (
         <div
-          className="submenu-panel fixed top-0 left-72 w-64 h-full bg-white z-[2001] shadow-2xl border-l border-gray-200"
+          className="submenu-panel fixed top-0 left-1/2 md:left-72 w-64 h-full bg-white z-[2001] shadow-2xl border-l border-gray-200"
           style={{ animation: 'slideInFromRight 0.3s ease-out' }}
           onMouseEnter={() => setActiveSubmenu(activeSubmenu)}
           onMouseLeave={() => {

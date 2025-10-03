@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PrivacyPolicyPage from "../../Pages/PrivacyPolicyPage";
 import TermsOfUsePage from "../../Pages/TermsOfUse";
 
@@ -13,14 +13,14 @@ function PrivacyPolicyModal({ onClose }) {
   }, []);
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm "
       onClick={onClose}
     >
       <div
-        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg max-w-2xl w-full p-0 relative max-h-[80vh] flex flex-col"
+        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg w-full max-w-2xl mx-4 sm:mx-8 p-0 relative max-h-[80vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto ">
           <PrivacyPolicyPage />
         </div>
         <div className="flex justify-end p-4">
@@ -50,7 +50,7 @@ function TermsOfUseModal({ onClose }) {
       onClick={onClose}
     >
       <div
-        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg max-w-2xl w-full p-0 relative max-h-[80vh] flex flex-col"
+        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg w-full max-w-2xl mx-4 sm:mx-8 p-0 relative max-h-[80vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex-1 overflow-y-auto ">
@@ -96,18 +96,15 @@ function Footer() {
 
           {/* Right: Navigation Links */}
           <div className="flex flex-col space-y-3 sm:space-y-4 text-base sm:text-lg relative lg:right-20 font-glacial">
-            <a href="/careers" className="hover:text-gray-300 transition-colors cursor-pointer">
+            <Link to="/careers" className="hover:text-gray-300 transition-colors cursor-pointer">
               Careers
-            </a>
-            <a href="/about" className="hover:text-gray-300 transition-colors cursor-pointer">
+            </Link>
+            <Link to="/about" className="hover:text-gray-300 transition-colors cursor-pointer">
               About
-            </a>
-            <a
-              href="/developerteam"
-              className="hover:text-gray-300 transition-colors cursor-pointer"
-            >
+            </Link>
+            <Link to="/developerteam" className="hover:text-gray-300 transition-colors cursor-pointer">
               Developers
-            </a>
+            </Link>
           </div>
         </div>
 

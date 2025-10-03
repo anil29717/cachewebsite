@@ -9,11 +9,11 @@ interface TeamMember {
 
 const TeamSection: React.FC = () => {
   const teamMembers: TeamMember[] = [
-    { id: 1, name: "Prathna Gupta", designation: "CMD", image: "/team/prarthna.jpg" },
+    { id: 1, name: "Prarthna Gupta", designation: "CMD", image: "/team/prarthna.jpg" },
     { id: 2, name: "Shraddha Gupta", designation: "CEO", image: "/team/shraddha.jpg" },
     { id: 3, name: "Amit Chaudhary", designation: "Director - Cyber Security & Cloud", image: "/team/amit.jpg" },
     { id: 4, name: "Vinod Pulyani", designation: "CFO & CEO", image: "/team/Vinod.jpg" },
-    { id: 5, name: "Saurabh Kumar Srivastava", designation: "VP of Cyber Security", image: "/team/saurabh.jpg" },
+    { id: 5, name: "Saurabh Kumar Srivastava", designation: "VP - Cyber Security", image: "/team/saurabh.jpg" },
     { id: 6, name: "Manohar", designation: "Senior Sales Manager", image: "/team/manohar.jpg" },
     { id: 7, name: "Geetanjali", designation: "Legal Compliance", image: "/team/geetanjali.png" },
     { id: 8, name: "Naresh", designation: "Senior Sales Manager", image: "/team/naresh.png" },
