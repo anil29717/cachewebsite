@@ -1,10 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
+import PrivacyPolicyPage from "../../Pages/PrivacyPolicyPage";
+import TermsOfUsePage from "../../Pages/TermsOfUse";
+
+// Modal for Privacy Policy
+function PrivacyPolicyModal({ onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg max-w-2xl w-full p-0 relative max-h-[80vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex-1 overflow-y-auto">
+          <PrivacyPolicyPage />
+        </div>
+        <div className="flex justify-end p-4">
+          <button
+            className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-red-600 hover:text-white transition-colors"
+            onClick={onClose}
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Modal for Terms of Use
+function TermsOfUseModal({ onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-gray-800 backdrop-blur-lg rounded-lg shadow-lg max-w-2xl w-full p-0 relative max-h-[80vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex-1 overflow-y-auto ">
+          <TermsOfUsePage />
+        </div>
+        <div className="flex justify-end p-4">
+          <button
+            className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-red-600 hover:text-white transition-colors"
+            onClick={onClose}
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Footer() {
   const navigate = useNavigate();
-
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <div className="bg-black text-white px-6 sm:px-8 py-12 sm:py-16 font-sans relative">
@@ -117,12 +185,18 @@ function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
             {/* Legal Links */}
             <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-6 text-xs sm:text-sm">
-              <a href="/privacy-policy" className="underline hover:text-gray-300 transition-colors">
+              <button
+                className="underline hover:text-gray-300 transition-colors"
+                onClick={() => setShowPrivacy(true)}
+              >
                 Privacy Policy
-              </a>
-              <a href="/terms-of-use" className="underline hover:text-gray-300 transition-colors">
+              </button>
+              <button
+                className="underline hover:text-gray-300 transition-colors"
+                onClick={() => setShowTerms(true)}
+              >
                 Terms of use
-              </a>
+              </button>
               {/* <a href="/site-map" className="underline hover:text-gray-300 transition-colors">
                 Site-map
               </a>
@@ -140,6 +214,12 @@ function Footer() {
           </div>
         </div>
       </div>
+      {showPrivacy && (
+        <PrivacyPolicyModal onClose={() => setShowPrivacy(false)} />
+      )}
+      {showTerms && (
+        <TermsOfUseModal onClose={() => setShowTerms(false)} />
+      )}
     </div>
   );
 }

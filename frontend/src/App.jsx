@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/HomeComponent/Navbar";
@@ -34,19 +34,38 @@ import CampaignsPage from "./Pages/CampaignsPage";
 import NewsletterPage from "./Pages/NewsletterPage";
 import OffersPage from "./Pages/OffersPage";
 
+// Loader component
+function Loader() {
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/80 backdrop-blur-sm">
+     <div className="flex flex-col items-center">
+      {/* <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-red-600 border-solid mb-6"></div> */}
+      <img
+        src="/loading/loadinglogo.gif" // <-- Replace with your GIF path
+        alt="Loading..."
+        className="h-64 w-64 object-contain"
+      />
+    </div>
+    </div>
+  );
+}
+
 function App() {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
-  // paths where Navbar & Login should be hidden
-  
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 2500); // Loader duration
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
     <>
-      
-          <Navbar />
-          <LoginButton />
-          {/* <SearchBar /> */}
-     
-
+      {loading && <Loader />}
+      <Navbar />
+      <LoginButton />
+      {/* <SearchBar /> */}
       {/* Page routes */}
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -55,7 +74,7 @@ function App() {
         <Route path="/service/cloud-solutions" element={<CloudServicesPage />} />
         {/* <Route path="/service/cybersecurity" element={<CybersecurityServicesPage />} />
         <Route path="/service/AI" element={<AIDataServicesPage />} />
-        <Route path="/consultingservice" element={<NetworkingConsultingPage />} /> */}
+        <Route path="/consultingservice" element={<NetworkingConsultingPage />} */}
 
 
         <Route path="/cloudservices" element={<CloudServicesPage />} />

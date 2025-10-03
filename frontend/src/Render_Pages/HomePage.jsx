@@ -12,6 +12,8 @@ import { Partners } from '../components/HomeComponent/Partners'
 import CTASection from '../components/HomeComponent/Subscribe'
 import Chatbot from '../components/Chatbot'
 import BotpressChatbot from '../components/BotpressChatbot'
+import PartnershipCards from '../components/AboutPageComponent/Cards'
+
 import { useEffect } from 'react'
 
 
@@ -38,16 +40,17 @@ export default function HomePage() {
       <InsightsSection />
       {/* <GlobalPartnersSection /> */}
       <PartnershipSection />
+      <PartnershipCards />
       <Partners />
       <CTASection />  
 
       {/* N8N Chatbot Component (Bottom Right) */}
-      <Chatbot />
+      {/* <Chatbot /> */}
 
       {/* Botpress Chatbot Component (Bottom Left) */}
       <BotpressChatbot />
 
-      {/* <FullScreenThreeImageSlider /> */}b
+      {/* <FullScreenThreeImageSlider /> */}
     </>
   )
 }

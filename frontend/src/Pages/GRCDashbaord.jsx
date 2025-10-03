@@ -1,7 +1,15 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Shield, FileCheck, AlertTriangle, Lock, CheckCircle, Building2, Globe, Server } from 'lucide-react';
+import { useScroll } from 'framer-motion';
 
 export default function GRCDashboard() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // scroll to top when page loads
+  });
+  
+
   const sections = [
     {
       title: "Compliance Management",

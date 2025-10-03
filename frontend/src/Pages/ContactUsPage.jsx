@@ -11,7 +11,7 @@ const ContactUsPage = () => {
     subject: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
   const location = useLocation();
@@ -41,7 +41,7 @@ const ContactUsPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-    
+
     try {
       const response = await fetch('https://cachedigitech.onrender.com/api/contact', {
         method: 'POST',
@@ -55,9 +55,9 @@ const ContactUsPage = () => {
           message: formData.message
         })
       });
-      
+
       const result = await response.json();
-      
+
       if (response.ok && result.message) {
         setSubmitStatus('success');
         // Reset form
@@ -123,6 +123,37 @@ const ContactUsPage = () => {
                 </div>
               </div>
 
+              <div className='flex items-center gap-20'>
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-red-600" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-lg font-medium text-gray-900">Office</p>
+                    <p className="text-gray-600">
+                      CRC2 Building Cache Digitech Sultanpur, Delhi 110030
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className='flex items-center gap-20'>
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-red-600" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-lg font-medium text-gray-900">Office</p>
+                    <p className="text-gray-600">
+                      404,C-Wing, Eastern Court Junction, Tejapal & Parleshwar Road, Vile Parle East, Mumbai, Maharashtra, India (400057).
+
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   <MapPin className="h-6 w-6 text-red-600" />
@@ -130,16 +161,15 @@ const ContactUsPage = () => {
                 <div className="ml-4">
                   <p className="text-lg font-medium text-gray-900">Office</p>
                   <p className="text-gray-600">
-                    CRC2 Building<br />
-                    Cache Digitech<br />
-                    Sultanpur, Delhi 110030
+                    404,C-Wing, Eastern Court Junction, Tejapal & Parleshwar Road, Vile Parle East, Mumbai, Maharashtra, India (400057).
+
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Business Hours */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
+            {/* <div className="mt-8 pt-8 border-t border-gray-200">
               <h3 className="text-lg font-medium text-gray-900 mb-4">
                 Business Hours
               </h3>
@@ -157,7 +187,7 @@ const ContactUsPage = () => {
                   <span>Closed</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Contact Form */}
@@ -241,7 +271,7 @@ const ContactUsPage = () => {
                   </div>
                 </div>
               )}
-              
+
               {submitStatus === 'error' && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
                   <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
@@ -255,11 +285,10 @@ const ContactUsPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-red-600 hover:bg-red-700'
-                } text-white`}
+                className={`w-full font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 ${isSubmitting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-red-600 hover:bg-red-700'
+                  } text-white`}
               >
                 {isSubmitting ? (
                   <>
@@ -278,16 +307,16 @@ const ContactUsPage = () => {
         </div>
 
         {/* Additional Information */}
-        <div className="mt-12 rounded-lg shadow-lg p-8" style={{backgroundColor: '#fdf0f1'}}>
+        <div className="mt-12 rounded-lg shadow-lg p-8" style={{ backgroundColor: '#fdf0f1' }}>
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Why Choose CacheSolver?
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-              We're committed to providing exceptional service and innovative solutions. 
+              We're committed to providing exceptional service and innovative solutions.
               Our team of experts is ready to help you achieve your goals.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -296,7 +325,7 @@ const ContactUsPage = () => {
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Quick Response</h3>
                 <p className="text-gray-600">We respond to all inquiries within 24 hours</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <Phone className="h-8 w-8 text-red-600" />
@@ -304,7 +333,7 @@ const ContactUsPage = () => {
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Expert Support</h3>
                 <p className="text-gray-600">Our experienced team is here to help</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <MapPin className="h-8 w-8 text-red-600" />
@@ -313,7 +342,7 @@ const ContactUsPage = () => {
                 <p className="text-gray-600">Serving clients worldwide with local expertise</p>
               </div>
             </div>
-            
+
             {/* Social Media Links */}
             <div className="mt-8 pt-8 border-t border-gray-300">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h3>

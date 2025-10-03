@@ -25,7 +25,15 @@ function BotpressChatbot() {
             chatButton.style.bottom = '20px';
             chatButton.style.left = '20px';
             chatButton.style.right = 'auto';
-            chatButton.style.zIndex = '9998'; // Lower z-index than N8N chatbot
+            chatButton.style.zIndex = '9998';
+            chatButton.style.backgroundColor = 'red'; // Button background
+
+            // Set icon color to red
+            const svg = chatButton.querySelector('svg');
+            if (svg) {
+              svg.style.fill = 'red'; // Icon color
+              svg.style.color = 'red'; // For some SVGs
+            }
           }
 
           // Also check for the chat container

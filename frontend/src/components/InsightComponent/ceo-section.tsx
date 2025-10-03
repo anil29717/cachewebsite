@@ -28,7 +28,7 @@ export function CEOSection() {
           >
             <Card className="overflow-hidden shadow-2xl">
               <ImageWithFallback
-                src="/team/prathnamam.avif"
+                src="/team/prathna.png"
                 alt="CEO Portrait"
                 className="w-full h-[500px] object-cover"
               />

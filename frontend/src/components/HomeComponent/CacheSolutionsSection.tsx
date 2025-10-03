@@ -355,7 +355,7 @@ export default function CacheSolutionsSection() {
               Let Cache Solve your Problems
             </h1>
             <p className="text-white/80 mt-6 text-lg">
-              while you maximize your growth
+              While you maximize your growth
             </p>
           </div>
 
@@ -564,19 +564,26 @@ export default function CacheSolutionsSection() {
 
                     {/* Subtopic Cards Container */}
                     <motion.div
-                      className="absolute inset-0 flex items-center justify-center p-8"
+                      className="absolute inset-0 flex items-center justify-center p-4 sm:p-6"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ delay: 0.3, duration: 0.4 }}
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl w-full h-full">
                         {selectedCapability?.subtopics.map((subtopic, index) => (
                           <motion.div
                             key={subtopic.name}
-                            className={`bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-300 ${
-                              selectedAuditSubtopic === subtopic.name ? 'ring-2 ring-white/50 bg-white/20' : ''
-                            }`}
+                            className={`bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-300 flex flex-col justify-between
+                              ${selectedAuditSubtopic === subtopic.name ? 'ring-2 ring-white/50 bg-white/20' : ''}`}
+                            style={{
+                              minWidth: '180px',
+                              maxWidth: '240px',
+                              minHeight: '140px',
+                              maxHeight: '220px',
+                              wordBreak: 'break-word',
+                              overflow: 'hidden'
+                            }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
@@ -584,11 +591,11 @@ export default function CacheSolutionsSection() {
                             data-testid={`subtopic-card-${subtopic.name.toLowerCase().replace(/\s+/g, '-')}`}
                           >
                             <div className="flex justify-between items-start">
-                              <h3 className="text-white font-semibold text-lg mb-3">
+                              <h3 className="text-white font-semibold text-base mb-2">
                                 {subtopic.name}
                               </h3>
                               <button 
-                                className="bg-red-600 hover:bg-red-700 rounded-full p-1.5 transition-colors"
+                                className="bg-red-600 hover:bg-red-700 rounded-full p-1 transition-colors"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   selectAuditSubtopic(subtopic);
@@ -598,7 +605,7 @@ export default function CacheSolutionsSection() {
                                 <ArrowRight className="h-4 w-4 text-white" />
                               </button>
                             </div>
-                            <p className="text-white/80 text-sm leading-relaxed">
+                            <p className="text-white/80 text-sm leading-relaxed break-words" style={{ flex: 1 }}>
                               {subtopic.description}
                             </p>
                           </motion.div>
@@ -607,7 +614,7 @@ export default function CacheSolutionsSection() {
                     </motion.div>
 
                     {/* Close Button */}
-                    <motion.button
+                    {/* <motion.button
                       className="absolute top-6 right-6 z-30 bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all duration-300"
                       onClick={closeDoorSlider}
                       initial={{ opacity: 0, scale: 0 }}
@@ -617,7 +624,7 @@ export default function CacheSolutionsSection() {
                       data-testid="close-door-slider"
                     >
                       <X className="w-6 h-6 text-white" />
-                    </motion.button>
+                    </motion.button> */}
                   </motion.div>
                 )}
               </AnimatePresence>
