@@ -226,30 +226,7 @@ const AIDataServicesPage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Transform Your Business with AI & Data?
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Discover how our comprehensive AI and data services can drive innovation and growth for your organization
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button
-              onClick={() => navigate('/contact')}
-              className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Start Your AI Journey
-            </button>
-            <button
-              onClick={() => navigate('/portfolio')}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
-            >
-              View Our Projects
-            </button>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

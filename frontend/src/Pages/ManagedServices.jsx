@@ -238,30 +238,7 @@ const ManagedServicesPage = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16">
-                <div className="max-w-4xl mx-auto px-6 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                        Ready to Optimize Your Operations with Managed Services?
-                    </h2>
-                    <p className="text-xl mb-8 opacity-90">
-                        Discover how our comprehensive managed services can enhance your operational efficiency and business performance
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <button
-                            onClick={() => console.log('Get Service Consultation clicked')}
-                            className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-                        >
-                            Get Service Consultation
-                        </button>
-                        <button
-                            onClick={() => console.log('View Service Portfolio clicked')}
-                            className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors"
-                        >
-                            View Service Portfolio
-                        </button>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     );
 };

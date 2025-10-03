@@ -220,24 +220,7 @@ const CloudServicesPage = () => {
       ))}
 
       {/* Call to Action */}
-      <div className="py-16 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center bg-gradient-to-r from-red-600 to-red-600 text-white p-12 rounded-lg">
-            <h2 className="text-3xl font-bold mb-4">Ready to Accelerate Your Cloud Journey?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Partner with us to unlock the full potential of cloud technology
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => navigate('/contact')} className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Contact Us
-              </button>
-              <button onClick={() => navigate('/services')} className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors">
-                View All Services
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };
