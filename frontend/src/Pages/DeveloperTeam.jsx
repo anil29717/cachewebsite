@@ -20,16 +20,7 @@ const DeveloperTeam = () => {
       email: "anilkumar.gugm@gmail.com",
       skills: ["MongoDb", "ReactJs", "Cloud GCP"]
     },
-    {
-      id: 2,
-      name: "Kritika Verma",
-      role: "Frontend Developer",
-      photo: "/Developer/kritika3.jpg",
-      linkedin: "https://linkedin.com/in/jessicathompson",
-      github: "https://github.com/jessicathompson",
-      email: "jessica@company.com",
-      skills: ["React Js", "Tailwind Css", "Wordpress"]
-    }, 
+    
     {
       id: 3,
       name: "Devender Singh",
@@ -40,6 +31,7 @@ const DeveloperTeam = () => {
       email: "david@company.com",
       skills: ["ReactJs Vite", "AWS", "Azure"]
     },
+    
     {
       id: 4,
       name: "Rishabh ",
@@ -62,6 +54,16 @@ const DeveloperTeam = () => {
     },
     {
       id: 6,
+      name: "Kritika Verma",
+      role: "Frontend Developer",
+      photo: "/Developer/kritika3.jpg",
+      linkedin: "https://linkedin.com/in/jessicathompson",
+      github: "https://github.com/jessicathompson",
+      email: "jessica@company.com",
+      skills: ["React Js", "Tailwind Css", "Wordpress"]
+    }, 
+    {
+      id: 2,
       name: "Aman Raj",
       role: "Cloud & DevOps Engineer",
       photo: "/Developer/Aman.jpg",
