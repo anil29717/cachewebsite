@@ -27,6 +27,12 @@ import AIDataServicesPage from "./Pages/aianddataservicepage";
 // import InfrastructureServicesPage from "./Pages/NetworkingServicepage";
 import NetworkingConsultingPage from "./Pages/consultingservicePage";
 import ManagedServicesPage from "./Pages/ManagedServices";
+import GRC from "./Pages/GRCDashbaord";
+import NotFoundPage from "./Pages/NotFoundPage";
+// Notification pages
+import CampaignsPage from "./Pages/CampaignsPage";
+import NewsletterPage from "./Pages/NewsletterPage";
+import OffersPage from "./Pages/OffersPage";
 
 function App() {
   const location = useLocation();
@@ -47,7 +53,7 @@ function App() {
         <Route path="/service/infra" element={<InfrastructureServicesPage />} />
         <Route path="/service/network" element={<NetworkingServicesPage />} />
         <Route path="/service/cloud-solutions" element={<CloudServicesPage />} />
-        <Route path="/service/cybersecurity" element={<CybersecurityServicesPage />} />
+        {/* <Route path="/service/cybersecurity" element={<CybersecurityServicesPage />} />
         <Route path="/service/AI" element={<AIDataServicesPage />} />
         <Route path="/consultingservice" element={<NetworkingConsultingPage />} /> */}
 
@@ -58,6 +64,8 @@ function App() {
         <Route path="/aianddataservice" element={<AIDataServicesPage />} />
         <Route path="/manageservices" element={<ManagedServicesPage />} />
         <Route path="/consultingservice" element={<NetworkingConsultingPage />} />
+        <Route path="/grc-dashboard" element={<GRC />} />
+
 
 
         <Route path="/contact" element={<Contact />} />
@@ -68,8 +76,15 @@ function App() {
         <Route path="/about" element={<AboutCache />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-use" element={<TermsOfUsePage />} />
-        <Route path="*" element={<h1>404 - Not Found</h1>} />
         <Route path="/careers" element={<Careers />} />
+        
+        {/* Notification pages */}
+        <Route path="/campaigns" element={<CampaignsPage />} />
+        <Route path="/newsletter" element={<NewsletterPage />} />
+        <Route path="/offers" element={<OffersPage />} />
+        
+        <Route path="*" element={<NotFoundPage />} />
+        
       </Routes>
 
       <Footer />

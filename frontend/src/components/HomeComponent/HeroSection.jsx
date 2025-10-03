@@ -19,7 +19,7 @@ const HeroSection = () => {
     };
 
     return (
-        <section  className="relative flex mt-38 sm:mt-16 flex-col items-center justify-center bg-transparent sm:px-6 md:px-8 overflow-hidden" >
+        <section  className="relative flex mt-38 sm:mt-10 flex-col items-center justify-center bg-transparent sm:px-6 md:px-8 overflow-hidden" >
             {/* Background Image */}
            
 
@@ -34,7 +34,9 @@ const HeroSection = () => {
                     className="relative z-10 mb-2 inline-block"
                     variants={textVariants}
                 >
-                    <span className="relative z-10 font-glacial font-semibold leading-tight text-black text-3xl md:text-4xl lg:text-5xl">
+                    <span className="relative z-10 font-glacial font-semibold leading-tight text-black text-3xl md:text-4xl lg:text-5xl " style={{
+                        textShadow: '0 0 5px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.6), 0 0 5px rgba(255, 255, 255, 0.4), 0 0 5x rgba(255, 255, 255, 0.2)'
+                    }}>
                         34+ Years of
                     </span>
                     {/* Decorative Line (placed behind text) */}
@@ -47,8 +49,10 @@ const HeroSection = () => {
 
                 {/* Excellence with Agility */}
                 <motion.div className="" variants={textVariants}>
-                    <h1 className="font-glacial leading-snug text-black text-3xl md:text-4xl lg:text-5xl">
-                        Excellence with Agility Service with Heart
+                    <h1 className="font-glacial leading-snug text-black text-3xl md:text-4xl lg:text-5xl " style={{
+                        textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2)'
+                    }}>
+                        Excellence with Agility, Service with Heart
                     </h1>
                 </motion.div>
             </motion.div>

@@ -3,7 +3,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   MoreHorizontalIcon,
-} from "lucide-react@0.487.0";
+} from "lucide-react";
 
 import { cn } from "./utils";
 import { Button, buttonVariants } from "./button";
@@ -52,7 +52,7 @@ function PaginationLink({
     <a
       aria-current={isActive ? "page" : undefined}
       data-slot="pagination-link"
-      data-active={isActive}
+      data-active={isActive || undefined}
       className={cn(
         buttonVariants({
           variant: isActive ? "outline" : "ghost",

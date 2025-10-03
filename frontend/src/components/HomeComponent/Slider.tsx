@@ -10,14 +10,43 @@ interface Slide {
 
 // The provided slide data
 const slides: Slide[] = [
-  { img: "/images/cloudimg.webp", title: "Consulting & Auditing", desc: "Scalable and reliable cloud infrastructure services." },
-  { img: "/images/aimlimg.webp", title: "Data AI", desc: "Advanced AI and ML solutions for automation and insights." },
-  { img: "/images/itimg.webp", title: "Cyber Security", desc: "Seamless, secure networking for your enterprise." },
-  { img: "/images/cyberimg.webp", title: "Cloud", desc: "Protect your digital assets with enterprise-grade security." },
-  { img: "/images/infraimg.webp", title: "Manage Services", desc: "Reliable IT infrastructure to power your business." },
-  { img: "/images/consultingimg.webp", title: "Infra & Networking", desc: "Strategic technology consulting and digital transformation." },
-  { img: "/images/grc.png", title: "GRC", desc: "Governance, Risk, and Compliance solutions for your business." }
+  { 
+    img: "/images/consultingimg.webp", 
+    title: "Consulting & Auditing", 
+    desc: "Expert IT consulting and compliance audits to optimize performance ." 
+  },
+  { 
+    img: "/images/aimlimg.webp", 
+    title: "Data AI", 
+    desc: "Harness the power of AI & ML for automation and smarter decision-making." 
+  },
+  { 
+    img: "/images/cyberimg.webp", 
+    title: "Cyber Security", 
+    desc: "End-to-end security solutions to protect networks, applications." 
+  },
+  { 
+    img: "/images/cloudimg.webp", 
+    title: "Cloud", 
+    desc: "Scalable and secure cloud infrastructure services." 
+  },
+  { 
+    img: "\manageservices.jpg", 
+    title: "Managed Services", 
+    desc: "Comprehensive IT management, monitoring, and support services." 
+  },
+  { 
+    img: "/images/infraimg.webp", 
+    title: "Infra & Networking", 
+    desc: "Robust IT infra and network solutions to strengthen and accelerate digital transformation." 
+  },
+  { 
+    img: "/images/grc.png", 
+    title: "Sanchalan AI", 
+    desc: "AI-driven Governance, Risk, and Compliance platform to streamline operations." 
+  }
 ];
+
 
 const EXTENSION_COUNT = 3; // Number of slides to duplicate for a seamless loop
 const extendedSlides = [
@@ -32,7 +61,7 @@ const Slider = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(true);
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoScroll = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -113,8 +142,8 @@ const Slider = () => {
       <div
         ref={sliderRef}
         className="relative w-full md:w-[50rem] overflow-hidden rounded-xl"
-        onMouseEnter={stopAutoScroll}
-        onMouseLeave={startAutoScroll}
+        // onMouseEnter={stopAutoScroll}
+        // onMouseLeave={startAutoScroll}
       >
         {/* Horizontal Slider Section */}
         <div

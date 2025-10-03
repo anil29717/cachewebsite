@@ -7,6 +7,7 @@ import { Menu, X, Search } from "lucide-react";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [activeSection, setActiveSection] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [showServicePopup, setShowServicePopup] = useState(null);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -39,41 +40,100 @@ function Navbar() {
   const handleMenuItemClick = (label) => {
     setMenuOpen(false);
 
-    // Define navigation routes for different menu items
-    const routes = {
-      // About section
-      "Concept of Cache": "/about",
-      "Mission Vision": "/about",
-      // "Meaning of Logo": "/about",
-      "Certifications and Awards": "/about",
-      "Team": "/about",
+    // Define navigation routes and section IDs for different menu items
+    const navigationMap = {
+      // About section with specific section IDs
+      "Concept of Cache": { route: "/about", sectionId: "concept-of-cache" },
+      "Mission Vision": { route: "/about", sectionId: "mission-vision" },
+      "Meaning of Logo": { route: "/about", sectionId: "meaning-of-logo" },
+      "Certifications and Awards": { route: "/about", sectionId: "certifications-awards" },
+      "Team": { route: "/about", sectionId: "team" },
 
       // Services section
-      "Cyber Security": "/cybersecurity",
-      "Data AI": "/aianddataservice",
-      "Cloud": "/cloudservices",
-      "Infrastructure & Networking": "/infrastructureservice",
-      "Managed Services": "/manageservices",
-      "Consulting & Auditing": "/consultingservice",
+      "Cyber Security": { route: "/cybersecurity", sectionId: null },
+      "Data AI": { route: "/aianddataservice", sectionId: null },
+      "Cloud": { route: "/cloudservices", sectionId: null },
+      "Infrastructure & Networking": { route: "/infrastructureservice", sectionId: null },
+      "Managed Services": { route: "/manageservices", sectionId: null },
+      "Consulting & Auditing": { route: "/consultingservice", sectionId: null },
+      "GRC": { route: "/grc-dashboard", sectionId: null },
 
       // Community section
-      "Industry": "/community",
-      "Partners": "/community",
-      "Clients": "/community",
+      "Industry": { route: "/community", sectionId: "industries" },
+      "Partners": { route: "/community", sectionId: "partners" },
+      "Clients": { route: "/community", sectionId: "clients" },
 
       // Insights section
-      "CEO": "/insights",
-      "Blogs": "/insights",
-      "Case Studies": "/insights",
-      "Events & Social Activities": "/insights",
+      "CEO": { route: "/insights", sectionId: "ceo" },
+      "Blogs": { route: "/insights", sectionId: "blog" },
+      "Case Studies": { route: "/insights", sectionId: "success-stories" },
+      "Events & Social Activities": { route: "/insights", sectionId: "events" },
 
       // Contact section
-      "Contact Us": "/contactus"
+      "Contact Us": { route: "/contactus", sectionId: null }
     };
 
-    const route = routes[label] || "/";
-    navigate(route);
+    const navItem = navigationMap[label];
+    if (!navItem) {
+      navigate("/");
+      return;
+    }
+
+    // Navigate to the route
+    navigate(navItem.route);
+    
+    // If there's a specific section ID, scroll to it after navigation
+    if (navItem.sectionId) {
+      // Use hash-based navigation for better reliability
+      navigate(`${navItem.route}#${navItem.sectionId}`);
+    }
   };
+
+  const renderSectionHeader = (title, sectionKey) => (
+    <div 
+      className="flex items-center justify-between text-lg font-bold text-black mt-6 cursor-pointer hover:text-red-600 transition-colors duration-200 py-2"
+      onClick={() => setActiveSection(activeSection === sectionKey ? null : sectionKey)}
+    >
+      <span>{title}</span>
+      <span className={`transition-transform duration-200 ${activeSection === sectionKey ? 'rotate-90' : ''}`}>
+        &gt;
+      </span>
+    </div>
+  );
+
+  const renderSubsections = (items, startIndex, sectionKey) => (
+    <div 
+      className={`
+        fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[2100]
+        transition-transform duration-500 ease-out border-l border-gray-200
+        ${activeSection === sectionKey 
+          ? 'transform translate-x-0' 
+          : 'transform translate-x-full'
+        }
+      `}
+    >
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-bold text-black">
+            {sectionKey === 'about' && 'About'}
+            {sectionKey === 'services' && 'Our Services'}
+            {sectionKey === 'community' && 'Community'}
+            {sectionKey === 'insights' && 'Insights'}
+            {sectionKey === 'contact' && 'Contact'}
+          </h3>
+          <span
+            className="text-2xl font-bold cursor-pointer text-black hover:text-red-600 transition-colors duration-200"
+            onClick={() => setActiveSection(null)}
+          >
+            ✕
+          </span>
+        </div>
+        <div className="space-y-2">
+          {items.map((item, i) => renderMenuItem(item, i + startIndex))}
+        </div>
+      </div>
+    </div>
+  );
 
   const renderMenuItem = (label, index, isService = false) => (
     <div key={index} className="relative">
@@ -95,470 +155,7 @@ function Navbar() {
     </div>
   );
 
-  const pageContent = {
-    "Concept of Cache":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Concept Of Cache</h1>
-        <p className="text-gray-700 mb-6">Cache improves speed by storing frequently used data for faster access.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/about");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
 
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Mission Vision":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Mission Vision</h1>
-        <p className="text-gray-700 mb-6">Our mission is to accelerate digital growth with cutting-edge technology.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/about");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Meaning of Logo":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Meaning of Logo</h1>
-        <p className="text-gray-700 mb-6">The logo symbolizes speed, connection, and reliability.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/about");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Certifications and Awards":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Certifications and Awards</h1>
-        <p className="text-gray-700 mb-6">We are certified by ISO, CMMI, and recognized with global awards.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/about");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Team":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Team</h1>
-        <p className="text-gray-700 mb-6">Our team consists of experts in IT, AI, and network solutions.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/about");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Infrastructure":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Infrastructure</h1>
-        <p className="text-gray-700 mb-6">Enterprise-grade infrastructure solutions for scalable business growth.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/infra");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Network Solution":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Network Solution</h1>
-        <p className="text-gray-700 mb-6">Seamless and secure networking solutions for enterprises.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/network");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Security":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Security</h1>
-        <p className="text-gray-700 mb-6">Advanced cybersecurity services to safeguard your digital assets.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/cybersecurity");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Cloud Solution":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Cloud Solution</h1>
-        <p className="text-gray-700 mb-6">End-to-end cloud migration and management solutions.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/cloud-solutions");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Artificial Intelligence":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Artificial Intelligence</h1>
-        <p className="text-gray-700 mb-6">AI-powered solutions to transform industries.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/AI");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Consulting":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Consulting</h1>
-        <p className="text-gray-700 mb-6">Strategic IT consulting to optimize investments.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/service/consulting");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Industry":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Industry</h1>
-        <p className="text-gray-700 mb-6">We serve industries like healthcare, retail, finance, and more.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/community");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Partners":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Partners</h1>
-        <p className="text-gray-700 mb-6">Trusted collaborations with leading technology providers.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/community");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Clients":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Clients</h1>
-        <p className="text-gray-700 mb-6">Global clients across various sectors trust our services.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/community");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "CEO":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">CEO</h1>
-        <p className="text-gray-700 mb-6">Insights from our CEO on leadership and innovation.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/insights");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Blogs":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Blogs</h1>
-        <p className="text-gray-700 mb-6">Explore technology blogs and latest IT trends.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/insights");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Case Studies":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Case Studies</h1>
-        <p className="text-gray-700 mb-6">Real-world implementations and success stories.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/insights");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Events & Social Activities":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Events & Social Activities</h1>
-        <p className="text-gray-700 mb-6">We actively engage in global events and CSR activities.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/insights");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Contact Us":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Contact Us</h1>
-        <p className="text-gray-700 mb-6">You can reach us at contact@cache.com or call +91-123456789.</p>
-        <button
-          onClick={() => {
-            setMenuOpen(false);
-            navigate("/contactus");
-          }}
-          className={`
-          flex items-center justify-center backdrop-blur-md py-4 px-8 rounded-3xl
-          relative z-[1000] ml-10 mt-10 transition-all duration-300 ease-out cursor-pointer
-          ${buttonHovered
-              ? 'bg-gradient-to-br from-red-600 to-red-700 text-white shadow-2xl shadow-red-600/30 border border-red-600'
-              : 'bg-white text-black shadow-2xl shadow-red-600/10 border border-red-600/20'
-            }
-        `}
-          onMouseEnter={() => setButtonHovered(true)}
-          onMouseLeave={() => setButtonHovered(false)}
-        >
-          Explore more
-        </button>
-      </>,
-
-    "Welcome":
-      <>
-        <h1 className="text-3xl font-bold text-black mb-4">Welcome</h1>
-        <p className="text-gray-700">👋 Please select a menu item from the left to view details.</p>
-      </>,
-  };
 
   return (
     <>
@@ -641,7 +238,7 @@ function Navbar() {
         </div>
       </nav> */}
 
-      <nav className="fixed left-1/2 md:left-34 top-9 z-[1000] flex w-[80%] -translate-x-1/2 items-center justify-between rounded-3xl border border-red-200 bg-white/70 px-3 py-2 shadow-lg backdrop-blur-md md:w-auto md:max-w-none md:justify-start md:px-3 md:py-3">
+      <nav className="fixed left-1/2 md:left-34 top-9 z-[1000] flex w-[80%] -translate-x-1/2 items-center justify-between rounded-3xl border border-red-200 bg-white px-3 py-2 shadow-lg md:w-auto md:max-w-none md:justify-start md:px-3 md:py-3">
         {/* Hamburger Menu Button */}
         <button
           className="group flex flex-col items-center justify-center rounded-xl bg-red-600 p-2 transition-all duration-300 ease-in-out hover:scale-105"
@@ -660,25 +257,38 @@ function Navbar() {
 
       {/* Enhanced Door-Sized Overlay - Sliding Door Effect */}
       <div className={`
-        fixed top-0 left-0 w-64 h-full bg-white/70  backdrop-blur-md z-[2000] flex flex-col transition-transform duration-500 ease-out shadow-2xl border-r border-white/20
+        fixed top-0 left-0 w-64 h-full bg-white/30  backdrop-blur-md z-[2000] flex flex-col transition-transform duration-500 ease-out shadow-2xl border-r border-white/20
         ${menuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}
       `}>
         {/* Overlay Header */}
         <div className="
-          flex items-center justify-between py-6 px-6
-            backdrop-blur-md bg-white/70 
+          flex items-center py-6 px-6 gap-4
+            backdrop-blur-md bg-white 
         ">
+          {/* Close Button with < symbol */}
           <span
             className="
               text-2xl font-bold cursor-pointer text-black 
               transition-all duration-300 ease-out p-2 rounded-full
-              hover:bg-gray-200
+              hover:bg-gray-200 w-10 h-10 flex items-center justify-center
             "
             onClick={() => setMenuOpen(false)}
           >
-            ✕
+            &lt;
           </span>
-
+          
+          {/* Cache Digitech Logo */}
+          <div className="flex items-center">
+            <img 
+              src={logo} 
+              alt="Cache Digitech Logo" 
+              className="w-30 h-30 object-contain cursor-pointer" 
+              onClick={() => {
+                navigate("/");
+                setMenuOpen(false);
+              }}
+            />
+          </div>
         </div>
 
         {/* Overlay Body */}
@@ -690,26 +300,43 @@ function Navbar() {
           {/* Left Menu */}
           <div className="
     w-full p-6 overflow-y-auto
-    max-h-full bg-transparent backdrop-blur-sm
+    max-h-full bg-white 
   ">
-            <h3 className="text-lg font-bold text-black mt-6">About</h3>
-            {["Concept of Cache", "Mission Vision", "Certifications and Awards", "Team"].map((item, i) => renderMenuItem(item, i))}
+            {/* About Section */}
+            <div>
+              {renderSectionHeader("About", "about")}
+            </div>
 
-            <h3 className="text-lg font-bold text-black mt-6">Our Services</h3>
-            {["Cyber Security", "Data AI", "Cloud", "Infrastructure & Networking", "Managed Services", "Consulting & Auditing"].map((item, i) => renderMenuItem(item, i + 5, true))}
+            {/* Our Services Section */}
+            <div>
+              {renderSectionHeader("Our Services", "services")}
+            </div>
 
-            <h3 className="text-lg font-bold text-black mt-6">Community</h3>
-            {["Industry", "Partners", "Clients"].map((item, i) => renderMenuItem(item, i + 11, true))}
+            {/* Community Section */}
+            <div>
+              {renderSectionHeader("Community", "community")}
+            </div>
 
-            <h3 className="text-lg font-bold text-black mt-6">Insights</h3>
-            {["CEO", "Blogs", "Case Studies", "Events & Social Activities"].map((item, i) => renderMenuItem(item, i + 14, true))}
+            {/* Insights Section */}
+            <div>
+              {renderSectionHeader("Insights", "insights")}
+            </div>
 
-            <h3 className="text-lg font-bold text-black mt-6">Contact</h3>
-            {["Contact Us"].map((item, i) => renderMenuItem(item, i + 18, true))}
+            {/* Contact Section */}
+            <div>
+              {renderSectionHeader("Contact", "contact")}
+            </div>
           </div>
         </div>
 
       </div>
+
+      {/* Subsection Panels */}
+      {renderSubsections(["Concept of Cache", "Mission Vision", "Certifications and Awards", "Team"], 0, "about")}
+      {renderSubsections(["Cyber Security", "Data AI", "Cloud", "Infrastructure & Networking", "Managed Services", "Consulting & Auditing", "GRC"], 5, "services")}
+      {renderSubsections(["Industry", "Partners", "Clients"], 12, "community")}
+      {renderSubsections(["CEO", "Blogs", "Case Studies", "Events & Social Activities"], 15, "insights")}
+      {renderSubsections(["Contact Us"], 19, "contact")}
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
     Search, Users, FileText, Shield, Server,
     CheckCircle, Star, AlertTriangle, Clock,
@@ -11,10 +12,20 @@ import {
 const ManagedServicesPage = () => {
     const [animatedText, setAnimatedText] = useState('');
     const [textIndex, setTextIndex] = useState(0);
+    const location = useLocation();
 
     useEffect(() => {
-        window.scrollTo(0, 0); // scroll to top when page loads
-    }, []);
+        // Check if there's a hash in the URL for section navigation
+        if (location.hash) {
+            const sectionId = location.hash.substring(1);
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            window.scrollTo(0, 0); // scroll to top when page loads
+        }
+    }, [location]);
 
     // Hero section animated texts
     const heroTexts = [
@@ -160,7 +171,7 @@ const ManagedServicesPage = () => {
 
 
             {/* Sticky Navigation */}
-            <div className="bg-white shadow-lg sticky top-0 z-50">
+            <div className="bg-white shadow-lg sticky top-20 md:top-0z-50">
                 <div className="max-w-6xl mx-auto px-6 py-4">
                     <div className="flex flex-wrap justify-center gap-2">
                         {services.map((service) => {

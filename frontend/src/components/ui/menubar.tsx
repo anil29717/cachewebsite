@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import * as MenubarPrimitive from "@radix-ui/react-menubar@1.1.6";
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react@0.487.0";
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { cn } from "./utils";
 
@@ -100,7 +100,7 @@ function MenubarItem({
   return (
     <MenubarPrimitive.Item
       data-slot="menubar-item"
-      data-inset={inset}
+      data-inset={inset || undefined}
       data-variant={variant}
       className={cn(
         "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -171,7 +171,7 @@ function MenubarLabel({
   return (
     <MenubarPrimitive.Label
       data-slot="menubar-label"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn(
         "px-2 py-1.5 text-sm font-medium data-[inset]:pl-8",
         className,
@@ -227,7 +227,7 @@ function MenubarSubTrigger({
   return (
     <MenubarPrimitive.SubTrigger
       data-slot="menubar-sub-trigger"
-      data-inset={inset}
+      data-inset={inset || undefined}
       className={cn(
         "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8",
         className,

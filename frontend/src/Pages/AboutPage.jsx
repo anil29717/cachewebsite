@@ -1,21 +1,34 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import GrowthSection from "../components/AboutPageComponent/GrowthComponent";
-import CacheSolutionsSection from "../components/HomeComponent/CacheSolutions";
+import CacheSolutionsSection from "../components/HomeComponent/CacheSolutionsSection";
 import PartnershipCards from "../components/AboutPageComponent/Cards";
 import TeamSection from "../components/AboutPageComponent/Team";
 import InfiniteSlider from "../components/AboutPageComponent/ImageSlider";
 
 function AboutCache() {
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // scroll to top when page loads
-  }, []);
+    // Check if there's a hash in the URL for section navigation
+    if (location.hash) {
+      const sectionId = location.hash.substring(1); // Remove the # symbol
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0); // scroll to top when page loads without hash
+    }
+  }, [location]);
 
 
   return (
     <div className="w-full">
       {/* ===== Video Section ===== */}
-      <div className="relative w-full h-screen overflow-hidden">
+      <div id="concept-of-cache" className="relative w-full h-screen overflow-hidden">
         {/* Background Video */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -88,7 +101,7 @@ function AboutCache() {
       </div>
 
       {/* ===== Our Mission Section ===== */}
-      <div className="w-full bg-gray-50 py-16 px-6 md:px-20">
+      <div id="mission-vision" className="w-full bg-gray-50 py-16 px-6 md:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -143,7 +156,7 @@ function AboutCache() {
             <div className="flex justify-center">
               <div className="w-80 h-96 bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="/team/prathnamam.avif"
+                  src="\mission.jpg"
                   alt="Professional woman"
                   className="w-full h-full object-cover"
                 />
@@ -153,7 +166,9 @@ function AboutCache() {
         </div>
       </div>
 
-      <TeamSection />
+      <div id="team">
+        <TeamSection />
+      </div>
 
       {/* ===== Our Vision Section ===== */}
       <div className="w-full bg-white py-16 px-6 md:px-20">
@@ -276,13 +291,19 @@ function AboutCache() {
         </div>
       </div>
 
-      <CacheSolutionsSection />
+      {/* Cache Solutions Section */}
+      <div id="meaning-of-logo">
+        <CacheSolutionsSection />
+      </div>
 
 
 
       <GrowthSection />
       <InfiniteSlider />
-      <PartnershipCards />
+      {/* Partnership Cards Section */}
+      <div id="certifications-awards">
+        <PartnershipCards />
+      </div>
 
     </div>
   );

@@ -1,11 +1,18 @@
 import React from 'react';
 import { CircleArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface CTASectionProps {
   className?: string;
 }
 
 const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
+  const navigate = useNavigate();
+
+  const handleContactNavigation = () => {
+    navigate('/contactus');
+  };
+
   return (
     <div className={`w-full py-10 sm:py-16 px-6 sm:px-14 ${className}`}>
       <div className="max-w-7xl mx-auto">
@@ -29,7 +36,10 @@ const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
                 Stay ahead with our latest updates
               </h3>
               
-              <button className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn">
+              <button 
+                onClick={handleContactNavigation}
+                className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn"
+              >
                 Subscribe Now
                 <CircleArrowRight className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 transition-transform fill-white text-red-600 group-hover/btn:translate-x-1" />
               </button>
@@ -45,7 +55,10 @@ const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
                 Still a Question specific to your use case?
               </h3>
               
-              <button className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn">
+              <button 
+                onClick={handleContactNavigation}
+                className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn"
+              >
                 Ask Here
                 <CircleArrowRight className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 fill-white text-red-600 transition-transform group-hover/btn:translate-x-1" />
               </button>
@@ -69,7 +82,10 @@ const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
                   Our latest offering based on industries
                 </h3>
                 
-                <button className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn">
+                <button 
+                  onClick={handleContactNavigation}
+                  className="bg-red-600 text-lg sm:text-xl lg:text-2xl font-glacial hover:bg-red-700 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 flex items-center gap-2 sm:gap-3 w-fit group/btn"
+                >
                   Get a Quote
                   <CircleArrowRight className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 fill-white text-red-600 transition-transform group-hover/btn:translate-x-1" />
                 </button>

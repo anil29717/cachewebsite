@@ -171,7 +171,18 @@ export default function ServicesSection() {
   const totalDesktopPages = Math.ceil(services.length / servicesPerDesktopView);
 
   const handleLearnMore = useCallback((serviceId) => {
-    navigate(`/service/${serviceId}`);
+    // Map service IDs to their corresponding routes and default sections
+    const serviceRoutes = {
+      'infra': '/infrastructureservice#audit',
+      'network': '/service/network#audit', 
+      'cloud-solutions': '/cloudservices#audit',
+      'AI': '/aianddataservice#audit',
+      'cybersecurity': '/cybersecurity#audit',
+      'consulting': '/consultingservice#audit'
+    };
+    
+    const route = serviceRoutes[serviceId] || `/service/${serviceId}`;
+    navigate(route);
   }, [navigate]);
 
   const handleDesktopPrevious = useCallback(() => {
@@ -266,7 +277,7 @@ export default function ServicesSection() {
               <div 
                 key={service.id} 
                 className="w-full"
-                data-scroll-stop={index === services.length - 1}
+                data-scroll-stop={index === services.length - 1 ? "true" : "false"}
               >
                 <ServiceCard
                   service={service}

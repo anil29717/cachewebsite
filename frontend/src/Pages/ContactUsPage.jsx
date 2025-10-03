@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Instagram, Linkedin, Twitter, Youtube, CheckCircle, AlertCircle, Facebook } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
@@ -13,10 +14,20 @@ const ContactUsPage = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // scroll to top when page loads
-  }, []);
+    // Check if there's a hash in the URL for section navigation
+    if (location.hash) {
+      const sectionId = location.hash.substring(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0); // scroll to top when page loads
+    }
+  }, [location]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -69,7 +80,7 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

@@ -19,7 +19,7 @@ function Footer() {
             </h2>
             <div className="relative">
               <p className="text-xl sm:text-2xl mb-2 font-holiday">
-                That's the Cache's Promise
+                That's Cache's Promise
               </p>
               {/* Decorative underline */}
               <img src="/footerline.png" className="h-5 sm:h-6" alt="underline" />

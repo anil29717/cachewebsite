@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, X, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface CapabilitySubtopic {
   name: string;
@@ -135,6 +136,7 @@ const caseStudyData: Record<string, ItemData> = {
 const caseStudyItems = ['Telecom', 'BFSI', 'Automobile & Manufacturing', 'Retail', 'Healthcare & Hospitality', 'Government', 'IT & ITES'];
 
 export default function CacheSolutionsSection() {
+  const navigate = useNavigate();
   const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
   const [caseStudiesOpen, setCaseStudiesOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ItemData | null>(null);
@@ -259,6 +261,13 @@ export default function CacheSolutionsSection() {
   const showDefinition = () => {
     if (selectedItem) {
       setDefinitionOpen(true);
+    }
+  };
+
+  const handleLearnMore = () => {
+    if (selectedItem) {
+      // Navigate to insights page with the selected case study name as a URL parameter and scroll to success-stories section
+      navigate(`/insights?activeStudy=${encodeURIComponent(selectedItem.name)}#success-stories`);
     }
   };
 
@@ -481,53 +490,12 @@ export default function CacheSolutionsSection() {
       <div className="w-full lg:w-1/2 relative min-h-[50vh] lg:h-[80vh] overflow-hidden" style={{
         filter: definitionOpen ? 'blur(8px)' : 'none'
       }}>
-              {/* Custom Sunset/Mountains Illustration */}
-              <div className="absolute inset-0 bg-gradient-to-b from-red-500 to-red-700">
-                {/* Sun */}
-                <div 
-                  className="absolute w-48 h-48 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, #fbbf24 0%, #f59e0b 40%, #ea580c 80%)',
-                    top: '25%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                  }}
-                />
-                
-                {/* Horizontal stripes on the sun */}
-                <div className="absolute" style={{ top: '30%', left: '50%', transform: 'translateX(-50%)', width: '200px' }}>
-                  <div className="h-0.5 bg-red-600/50 mb-3"></div>
-                  <div className="h-0.5 bg-red-600/50 mb-3"></div>
-                  <div className="h-0.5 bg-red-600/50 mb-3"></div>
-                  <div className="h-0.5 bg-red-600/50 mb-3"></div>
-                  <div className="h-0.5 bg-red-600/50"></div>
-                </div>
-                
-                {/* Back Mountains */}
-                <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
-                  <path 
-                    d="M0,300 L0,170 L50,130 L100,150 L150,110 L200,130 L250,90 L300,120 L350,100 L400,110 L400,300 Z" 
-                    fill="#6b7280"
-                    opacity="0.9"
-                  />
-                </svg>
-                
-                {/* Front Mountains */}
-                <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
-                  <path 
-                    d="M0,300 L0,210 L30,170 L70,190 L110,150 L150,170 L190,130 L230,160 L270,120 L310,140 L350,110 L400,130 L400,300 Z" 
-                    fill="#4b5563"
-                  />
-                </svg>
-                
-                {/* Foreground Mountains */}
-                <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
-                  <path 
-                    d="M0,300 L0,240 L40,190 L90,210 L140,170 L190,190 L240,150 L290,170 L340,140 L400,160 L400,300 Z" 
-                    fill="#374151"
-                  />
-                </svg>
-              </div>
+              {/* Handshake Image */}
+              <img 
+                src="/handhsake.jpg" 
+                alt="Business Handshake" 
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
               {/* Tile Card */}
               <AnimatePresence>
@@ -553,7 +521,7 @@ export default function CacheSolutionsSection() {
                       <div className="mt-4">
                         <button 
                           className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md flex items-center gap-2 transition-colors"
-                          onClick={showDefinition}
+                          onClick={handleLearnMore}
                         >
                           LEARN MORE <span className="text-lg">→</span>
                         </button>

@@ -8,7 +8,7 @@ export function Navigation() {
   const navItems = [
     { label: "CEO", href: "#ceo" },
     { label: "Blog", href: "#blog" },
-    { label: "Case Studies", href: "#case-studies" },
+    { label: "Case Studies", href: "#success-stories" },
     { label: "Events", href: "#events" },
   ];
 
